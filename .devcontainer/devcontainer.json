@@ -1,23 +1,29 @@
 {
-    "name": "Aula Java 25",
-    "image": "mcr.microsoft.com/devcontainers/java:25",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "vscjava.vscode-java-pack"
-            ],
-            "settings": {
-                "java.compile.nullAnalysis.mode": "automatic",
-                "java.configuration.runtime": [
-                    {
-                        "name": "JavaSE-25",
-                        "path": "/usr/local/sdkman/candidates/java/current",
-                        "default": true
-                    }
-                ],
-                "java.jdt.ls.vmargs": "--enable-preview",
-                "java.project.sourceLanguageLevel": "25" 
-            }
-        }
+  "name": "Java 25 - IFBA",
+  "image": "mcr.microsoft.com/devcontainers/java:1-21-bullseye", // Ou a imagem que você utiliza
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.java",
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-java-test",
+        "vscjava.vscode-java-dependency-viewer"
+      ],
+      "settings": {
+        // Define que qualquer subpasta da raiz é considerada fonte válida sem exigir 'package'
+        "java.project.sourcePaths": [
+          "."
+        ],
+        // Garante suporte às funcionalidades de preview do Java (Unnamed Classes / void main)
+        "java.configuration.runtimes": [
+          {
+            "name": "JavaSE-25",
+            "path": "/usr/lib/jvm/default-jvm", // Caminho do JDK no container
+            "default": true
+          }
+        ]
+      }
     }
+  }
 }
