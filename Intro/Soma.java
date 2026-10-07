@@ -1,6 +1,3 @@
-
-package Intro;
-
 void main() {
     
     int n1 = Integer.parseInt(IO.readln("Digite o primeiro número: "));

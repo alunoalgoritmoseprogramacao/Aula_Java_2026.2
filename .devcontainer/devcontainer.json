@@ -1,29 +1,38 @@
 {
-  "name": "Java 25 - IFBA",
-  "image": "mcr.microsoft.com/devcontainers/java:1-21-bullseye", // Ou a imagem que você utiliza
+    "name": "Aula Java 25",
+    "image": "mcr.microsoft.com/devcontainers/java:25",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vscjava.vscode-java-pack"
+            ],
+            "settings": {
+                // Análise de nulos mantida
+                "java.compile.nullAnalysis.mode": "automatic",
 
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "redhat.java",
-        "vscjava.vscode-java-debug",
-        "vscjava.vscode-java-test",
-        "vscjava.vscode-java-dependency-viewer"
-      ],
-      "settings": {
-        // Define que qualquer subpasta da raiz é considerada fonte válida sem exigir 'package'
-        "java.project.sourcePaths": [
-          "."
-        ],
-        // Garante suporte às funcionalidades de preview do Java (Unnamed Classes / void main)
-        "java.configuration.runtimes": [
-          {
-            "name": "JavaSE-25",
-            "path": "/usr/lib/jvm/default-jvm", // Caminho do JDK no container
-            "default": true
-          }
-        ]
-      }
+                // Nível de versão 25 explícito para o compilador do VS Code
+                "java.compiler.source": "25",
+                "java.compiler.target": "25",
+                "java.compiler.release": "25",
+
+                // Ativa os recursos de Preview (Instance Main Methods / Unnamed Classes)
+                "java.jdt.ls.vmargs": "-XX:+UnlockExperimentalVMOptions --enable-preview",
+                "java.run.vmargs": "--enable-preview",
+
+                // Trata a raiz e subpastas como fonte (libera subpastas sem exigir a palavra 'package')
+                "java.project.sourcePaths": [
+                    "."
+                ],
+
+                // Aponta para o Java 25 do SDKMAN da imagem oficial
+                "java.configuration.runtimes": [
+                    {
+                        "name": "JavaSE-25",
+                        "path": "/usr/local/sdkman/candidates/java/current",
+                        "default": true
+                    }
+                ]
+            }
+        }
     }
-  }
 }
